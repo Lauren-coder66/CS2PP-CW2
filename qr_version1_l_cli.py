@@ -1,7 +1,6 @@
-"""Learning reference for CW2 stage 1; students must write their own submission code.
+"""Generate a numeric Version 1-L QR matrix from command-line byte-mode input.
 
-Version 1, byte mode, ISO-8859-1, error correction L, and mask pattern 0.
-This module is not a substitute for the group's own implementation.
+Uses ISO-8859-1, Reed-Solomon error correction, and mask pattern 0.
 QR rules and constants: https://www.thonky.com/qr-code-tutorial/
 """
 
