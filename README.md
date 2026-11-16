@@ -1,19 +1,32 @@
-# CW2 Stage 1: first progress checkpoint
+# CS2PP CW2：第一阶段进度预览
 
-This small prototype only covers dynamic command-line input and the first byte-conversion step. It is **not** a QR generator. The coursework specifies CSGitlab; confirm with the lecturer whether the group's private GitHub repository is acceptable instead.
+本仓库目前只有命令行输入和字节转换的初步演示，**尚不能生成二维码**。课程要求使用 CSGitlab；如果小组改用这个私有 GitHub 仓库，应先向老师确认是否被接受。
 
-Run interactively with Python 3.13.9:
+## 当前实现
 
-```text
+- 从命令行动态读取一段文本。
+- 尝试按 ISO-8859-1 将文本转换为字节，并显示字节的十六进制和二进制形式。
+- 遇到无法编码的字符时，指出第一个字符及其位置，不替换或删除原文。
+- 可为题目给出的五段示例文本生成进度记录，保存在 `demo_outputs/`。
+
+## 运行方法
+
+建议使用课程指定的 Python 3.13.9。在本目录运行：
+
+```powershell
 python qr_input_preview.py
 ```
 
-Create five numbered progress records:
+输入一段文本后，程序会打印当前已完成的转换步骤。重新生成五份示例记录：
 
-```text
+```powershell
 python qr_input_preview.py --demo-dir demo_outputs
 ```
 
-The coursework points to ISO-8859-1 for byte-mode comparison. That encoding cannot represent every character in the five supplied strings. This prototype reports the first unsupported character without replacing it; the group should confirm the intended handling with the lecturer. Longer inputs are converted to bytes here, but Version 1 capacity is **not yet checked**.
+## 已知限制与待确认问题
 
-Next implementation steps: confirm character-set policy; add byte-mode bitstream fields, Version 1 Level L capacity checks, `reedsolo` error-correction codewords, matrix layout and mask 0, then annotated logs of every step. Review the work in the group repository before treating it as coursework code.
+- ISO-8859-1 不能表示五段示例文本中的所有字符。当前程序会报告失败；小组应向老师确认预期的字符集及处理方式。
+- 较长输入目前也会转换为字节，但程序尚未检查 Version 1、纠错级别 L 的容量。
+- 尚未实现完整的字节模式数据位流、`reedsolo` 纠错码字、二维码矩阵、掩码 0，以及各步骤的注释日志。
+
+这些功能是后续开发任务。组员应共同检查实现与课程要求，再将其作为正式作业代码使用。
