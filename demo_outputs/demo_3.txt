@@ -1,0 +1,8 @@
+Input: '~¡256_-_aA&ñ'
+Mode: byte (0100)
+Character set attempted: ISO-8859-1
+Status: byte conversion completed
+Byte count: 12
+Bytes (hex): 7e a1 32 35 36 5f 2d 5f 61 41 26 f1
+Data bits: 01111110 10100001 00110010 00110101 00110110 01011111 00101101 01011111 01100001 01000001 00100110 11110001
+QR capacity, error correction, matrix and mask: not implemented yet

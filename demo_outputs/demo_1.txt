@@ -1,0 +1,8 @@
+Input: 'known'
+Mode: byte (0100)
+Character set attempted: ISO-8859-1
+Status: byte conversion completed
+Byte count: 5
+Bytes (hex): 6b 6e 6f 77 6e
+Data bits: 01101011 01101110 01101111 01110111 01101110
+QR capacity, error correction, matrix and mask: not implemented yet

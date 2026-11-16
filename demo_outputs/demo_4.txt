@@ -1,0 +1,6 @@
+Input: 'From α to ɷ...'
+Mode: byte (0100)
+Character set attempted: ISO-8859-1
+Status: encoding stopped
+First unsupported character: 'α' at index 5 (U+03B1)
+No characters were replaced or removed.
