@@ -3,11 +3,12 @@
 import hashlib
 import unittest
 
-from qr_stage1_reference import generate_report
+from qr_stage1_reference import format_bits, generate_report
 
 
 class Stage1ReferenceTests(unittest.TestCase):
     def test_known_matches_independent_reference_matrix(self):
+        self.assertEqual(format_bits("L", 0), 0x77C4)
         _, matrix = generate_report("known")
         self.assertEqual(matrix.shape, (21, 21))
         self.assertEqual(

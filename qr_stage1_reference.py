@@ -51,9 +51,12 @@ def encode_data(raw: bytes) -> tuple[bytes, list[str]]:
     return bytes(codewords), steps
 
 
-def format_bits() -> int:
-    # ECC L is 01; mask 0 is 000. BCH polynomial and final XOR are QR constants.
-    value = 0b01000
+def format_bits(ecc_level: str, mask_pattern: int) -> int:
+    """Build the 15 format bits from the selected ECC level and mask pattern."""
+    ecc_codes = {"L": 0b01, "M": 0b00, "Q": 0b11, "H": 0b10}
+    if ecc_level not in ecc_codes or not 0 <= mask_pattern <= 7:
+        raise ValueError("Invalid QR format parameters")
+    value = (ecc_codes[ecc_level] << 3) | mask_pattern
     remainder = value << 10
     for shift in range(4, -1, -1):
         if remainder & (1 << (shift + 10)):
@@ -114,7 +117,7 @@ def matrix_for(codewords: bytes) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
                            (SIZE, SIZE), dtype=int).astype(bool) & ~reserved
     matrix[mask] ^= 1
 
-    fmt = format_bits()
+    fmt = format_bits("L", 0)
     for index in range(6):
         fixed(index, 8, (fmt >> index) & 1)
     fixed(7, 8, (fmt >> 6) & 1)
@@ -162,7 +165,7 @@ def generate_report(value: str) -> tuple[str, np.ndarray | None]:
     before, mask, final = matrix_for(combined)
     log += ["Matrix before mask (0=white, 1=black; reserved format slots are 0):",
             rows(before), "Mask 0 on data cells only (1 means toggle):", rows(mask),
-            f"Format bits for L/0: {format_bits():015b}",
+            f"Format bits for L/0: {format_bits('L', 0):015b}",
             "Final 21x21 numeric matrix:", rows(final)]
     return "\n".join(log), final
 
