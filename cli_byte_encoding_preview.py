@@ -1,4 +1,4 @@
-"""First CW2 checkpoint: show CLI input and QR byte-mode encoding steps.
+"""Preview CLI input and byte conversion for CW2.
 
 This module does not create a QR code or check Version 1 capacity.
 """

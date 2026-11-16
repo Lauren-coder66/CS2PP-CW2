@@ -1,4 +1,4 @@
-# CS2PP CW2：小组开发清单（草稿）
+# CS2PP CW2：命令行字节编码预览与小组开发清单（草稿）
 
 > 本文件用于小组安排开发和记录进度，不是最终提交的 README。课程要求最终代码和文字由学生自己完成；提交前请由组员依据原作业说明自行撰写、核对最终文档，并说明 AI 工具的使用情况。
 
@@ -46,14 +46,16 @@
 建议使用课程指定的 Python 3.13.9。在本目录运行：
 
 ```powershell
-python qr_input_preview.py
+python cli_byte_encoding_preview.py
 ```
 
 输入一段文本后，程序会打印当前已完成的转换步骤。重新生成五份示例记录：
 
 ```powershell
-python qr_input_preview.py --demo-dir demo_outputs
+python cli_byte_encoding_preview.py --demo-dir demo_outputs
 ```
+
+`demo_outputs/demo_1.txt` 至 `demo_5.txt` 分别记录题目指定的五段示例输入。它们只是当前字节转换步骤的运行记录，不是二维码图片或完整的第一阶段证明。`demo_4.txt` 记录了字符无法按 ISO-8859-1 编码的情况；较长输入目前也没有经过 Version 1 容量检查。
 
 ## 已知限制与待确认问题
 
